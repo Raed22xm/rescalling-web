@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './pages/home/home';
 import Auth from './pages/auth/auth';
+import Upload from './pages/upload/upload';
 import {
   createBrowserRouter,
 
@@ -17,6 +18,10 @@ const appRoutes = createBrowserRouter([
   {
     path : "/auth",
     element : <Auth />
+  },
+  {
+    path : "/upload",
+    element : <Upload />
   }
 ])
 

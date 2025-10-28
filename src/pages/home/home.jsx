@@ -5,6 +5,7 @@ import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import Footer from "../../components/footer/footer";
+import { Link } from "react-router-dom";
 function Home() {
     return (
         <div  >
@@ -19,10 +20,13 @@ function Home() {
                         Professional image rescaling with intelligent algorithms. Upload, rescale, and download your images with our powerful cloud-based platform.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                        <Link to="/upload">
+                        
                         <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center gap-2 shadow-lg">
                             <BrokenImageOutlinedIcon />
                             Start Resizing Free
                         </button>
+                        </Link>
                         <button className="bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-300 px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 shadow-lg">
                             View Demo
                         </button>
@@ -108,10 +112,13 @@ function Home() {
             <div className=" bg-blue-400 flex flex-col items-center p-20 " color="black" >
                 <h2 className="text-center font-bold mb-5 text-3xl text-white" >Ready to Get Started</h2>
                 <p className="text-center font-bold mb-5 text-white" >Join thousands of users who trust ResizeHub for their image rescaling needs.</p>
-                <button className="bg-white hover:bg-blue-700 text-black p-3 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center gap-2 shadow-lg">
-                    <BrokenImageOutlinedIcon />
-                    Start Resizing Free
-                </button>
+                <Link to="/upload">
+                    <button className="bg-white hover:bg-blue-700 text-black p-3 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center gap-2 shadow-lg">
+                        <BrokenImageOutlinedIcon />
+                        Start Resizing Free
+                    </button>
+                </Link>
+
             </div>
             <Footer />
 
