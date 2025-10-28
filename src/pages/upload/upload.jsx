@@ -170,7 +170,7 @@ function Upload() {
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                 >
-                                    
+                                    1280x720
                                 </button>
                                 <button onClick={()=>{setPresetSizes("1080x1080")}}
                                     type="button"
