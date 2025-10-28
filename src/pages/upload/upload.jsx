@@ -23,6 +23,19 @@ function Upload() {
             setUserImg(imageUrl)
         }
     }
+    
+    const [width, setWidth  ] = useState()
+    
+    const [height,setHeight] = useState()
+
+    const [aspect, setAspect] = useState()
+
+    const [presetSizes,setPresetSizes] = useState()
+
+    const [outputFormat,setOutputFormat] = useState()
+
+    const [quality, setQuality]= useState()
+ 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50">
             <Navbar />
@@ -107,7 +120,8 @@ function Upload() {
                                     <PhotoSizeSelectActualOutlinedIcon className="text-slate-500" fontSize="small" />
                                     Width (px)
                                 </span>
-                                <input
+                                <input onChange={(e)=> { setWidth(e.target.value)}}
+                                
                                     type="number"
                                     placeholder="1920"
                                     className={inputClasses}
@@ -120,7 +134,7 @@ function Upload() {
                                     <PhotoSizeSelectActualOutlinedIcon className="text-slate-500" fontSize="small" />
                                     Height (px)
                                 </span>
-                                <input
+                                <input onChange={(e)=> {setHeight(e.target.value)}}
                                     type="number"
                                     placeholder="1080"
                                     className={inputClasses}
@@ -130,7 +144,7 @@ function Upload() {
 
                         {/* Aspect Ratio Lock */}
                         <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
-                            <input
+                            <input  onChange={(e)=> {setAspect(e.target.value)}}
                                 type="checkbox"
                                 className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                             />
@@ -146,25 +160,25 @@ function Upload() {
                                 <span className="text-sm font-medium text-slate-700">Preset Sizes</span>
                             </label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                <button
+                                <button onClick={()=>{setPresetSizes("1920x1080")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                 >
                                     1920x1080
                                 </button>
-                                <button
+                                <button onClick={()=>{setPresetSizes("1280x720")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                 >
-                                    1280x720
+                                    
                                 </button>
-                                <button
+                                <button onClick={()=>{setPresetSizes("1080x1080")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                 >
                                     1080x1080
                                 </button>
-                                <button
+                                <button onClick={()=>{setPresetSizes("800x600")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                 >
@@ -185,25 +199,25 @@ function Upload() {
                                     <span className="text-sm font-medium text-slate-700">Output Format</span>
                                 </label>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                    <button
+                                    <button onClick={()=>{setOutputFormat("JPG")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-indigo-500 bg-indigo-50 text-sm font-medium text-indigo-700"
                                     >
                                         JPG
                                     </button>
-                                    <button
+                                    <button onClick={()=>{setOutputFormat("PNG")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                     >
                                         PNG
                                     </button>
-                                    <button
+                                    <button onClick={()=>{setOutputFormat("webP")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                     >
                                         WebP
                                     </button>
-                                    <button
+                                    <button  onClick={()=>{setOutputFormat("Original")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
                                     >
@@ -217,11 +231,12 @@ function Upload() {
                                 <label className="block mb-3">
                                     <span className="text-sm font-medium text-slate-700">Quality: 85%</span>
                                 </label>
-                                <input
+                                <input 
                                     type="range"
                                     min="1"
                                     max="100"
-                                    defaultValue="85"
+                                    value={quality?? 85}
+                                    onChange={(e)=> setQuality(Number(e.target.value))}
                                     className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
                                 />
                                 <div className="flex justify-between text-xs text-slate-500 mt-1">
