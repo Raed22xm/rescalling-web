@@ -32,7 +32,7 @@ function Upload() {
 
     const [presetSizes,setPresetSizes] = useState()
 
-    const [outputFormat,setOutputFormat] = useState()
+    const [outputFormat,setOutputFormat] = useState("JPG")
 
     const [quality, setQuality]= useState()
  
@@ -211,29 +211,41 @@ function Upload() {
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                     <button onClick={()=>{setOutputFormat("JPG")}}
                                         type="button"
-                                        className="px-4 py-2 rounded-lg border-2  text-sm font-medium text-indigo-700"
-                                        style={outputFormat == "JPG" ? {borderColor: "indigo"} : null}
+                                        className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-colors ${
+                                            outputFormat === "JPG" 
+                                                ? "border-indigo-500 bg-indigo-50 text-indigo-700" 
+                                                : "border-slate-200 bg-white text-slate-700 hover:border-indigo-500 hover:bg-indigo-50"
+                                        }`}
                                     >
                                         JPG
                                     </button>
                                     <button onClick={()=>{setOutputFormat("PNG")}}
                                         type="button"
-                                        className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
-                                        style={outputFormat == "PNG" ? {borderColor: "indigo"} : null}
+                                        className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-colors ${
+                                            outputFormat === "PNG" 
+                                                ? "border-indigo-500 bg-indigo-50 text-indigo-700" 
+                                                : "border-slate-200 bg-white text-slate-700 hover:border-indigo-500 hover:bg-indigo-50"
+                                        }`}
                                     >
                                         PNG
                                     </button>
-                                    <button onClick={()=>{setOutputFormat("webP")}}
+                                    <button onClick={()=>{setOutputFormat("WebP")}}
                                         type="button"
-                                        className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
-                                        style={outputFormat == "webP" ? {borderColor: "indigo"} : null}
+                                        className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-colors ${
+                                            outputFormat === "WebP" 
+                                                ? "border-indigo-500 bg-indigo-50 text-indigo-700" 
+                                                : "border-slate-200 bg-white text-slate-700 hover:border-indigo-500 hover:bg-indigo-50"
+                                        }`}
                                     >
                                         WebP
                                     </button>
-                                    <button  onClick={()=>{setOutputFormat("Original")}}
+                                    <button onClick={()=>{setOutputFormat("Original")}}
                                         type="button"
-                                        className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
-                                        style={outputFormat == "Original" ? {borderColor: "indigo"} : null}
+                                        className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-colors ${
+                                            outputFormat === "Original" 
+                                                ? "border-indigo-500 bg-indigo-50 text-indigo-700" 
+                                                : "border-slate-200 bg-white text-slate-700 hover:border-indigo-500 hover:bg-indigo-50"
+                                        }`}
                                     >
                                         Original
                                     </button>
