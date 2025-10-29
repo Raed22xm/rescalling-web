@@ -15,12 +15,16 @@ const inputClasses =
 
 function Auth() {
     const [mode, setMode] = useState("login");
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
     const isLogin = mode === "login";
 
     const handleSubmit = (event) => {
         event.preventDefault();
     };
-
+   
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50">
             <div className="max-w-5xl mx-auto px-6 py-10">
@@ -81,13 +85,15 @@ function Auth() {
                                         type="text"
                                         placeholder="John Doe"
                                         className={inputClasses}
+                                        value={fullName}
+                                        onChange={(e)=> {setFullName(e.target.value)}}
                                     />
                                 </label>
                             )}
 
                             <label className="block text-left">
                                 <span className="text-sm font-medium text-slate-700">Email</span>
-                                <input
+                                <input onChange={(e)=> {setEmail(e.target.value)}}
                                     type="email"
                                     placeholder="you@example.com"
                                     className={inputClasses}
@@ -96,7 +102,7 @@ function Auth() {
 
                             <label className="block text-left">
                                 <span className="text-sm font-medium text-slate-700">Password</span>
-                                <input
+                                <input onChange={(e)=> {setPassword(e.target.value)}}
                                     type="password"
                                     placeholder={
                                         isLogin ? "Enter your password" : "Create a strong password"
@@ -108,46 +114,47 @@ function Auth() {
                             {isLogin ? (
                                 <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
                                     <label className="inline-flex items-center gap-2 text-slate-600">
-                                        <input
+                                        <input onChange={(e)=> {setRememberMe(e.target.checked)}}
                                             type="checkbox"
                                             className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                                         />
                                         Remember me
                                     </label>
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="/auth/forgot"
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
                                     >
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                 </div>
                             ) : (
                                 <label className="flex items-start gap-3 text-sm text-slate-600">
-                                    <input
+                                    <input 
                                         type="checkbox"
                                         className="mt-1 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <span>
                                         I agree to the{" "}
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to="/terms"
                                             className="font-medium text-indigo-600 hover:text-indigo-500"
                                         >
                                             Terms of Service
-                                        </a>{" "}
+                                        </Link>{" "}
                                         and{" "}
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to="/privacy"
                                             className="font-medium text-indigo-600 hover:text-indigo-500"
                                         >
                                             Privacy Policy
-                                        </a>
+                                        </Link>
                                         .
                                     </span>
                                 </label>
                             )}
 
                             <button
+                                onClick={handleSubmit}
                                 type="submit"
                                 className="w-full rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-slate-800"
                             >
