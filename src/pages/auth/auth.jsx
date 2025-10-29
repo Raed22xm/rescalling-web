@@ -23,6 +23,7 @@ function Auth() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log({fullName , email , password , rememberMe})
     };
    
     return (
