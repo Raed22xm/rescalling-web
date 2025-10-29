@@ -36,6 +36,12 @@ function Upload() {
 
     const [quality, setQuality]= useState()
  
+    function handleResize(){
+        let userPrefrence = {
+            width , height , aspect , presetSizes , outputFormat , quality
+        }
+        console.log(userPrefrence)
+    }
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50">
             <Navbar />
@@ -163,24 +169,28 @@ function Upload() {
                                 <button onClick={()=>{setPresetSizes("1920x1080")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                    style={presetSizes === "1920x1080" ? {"borderColor" : "indigo"} : null}
                                 >
                                     1920x1080
                                 </button>
                                 <button onClick={()=>{setPresetSizes("1280x720")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                    style={presetSizes === "1280x720" ? {"borderColor" : "indigo"} : null}
                                 >
                                     1280x720
                                 </button>
                                 <button onClick={()=>{setPresetSizes("1080x1080")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                    style={presetSizes === "1080x1080" ? {"borderColor" : "indigo"} : null}
                                 >
                                     1080x1080
                                 </button>
                                 <button onClick={()=>{setPresetSizes("800x600")}}
                                     type="button"
                                     className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                    style={presetSizes === "800x600" ? {"borderColor" : "indigo"} : null}
                                 >
                                     800x600
                                 </button>
@@ -201,25 +211,29 @@ function Upload() {
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                     <button onClick={()=>{setOutputFormat("JPG")}}
                                         type="button"
-                                        className="px-4 py-2 rounded-lg border-2 border-indigo-500 bg-indigo-50 text-sm font-medium text-indigo-700"
+                                        className="px-4 py-2 rounded-lg border-2  text-sm font-medium text-indigo-700"
+                                        style={outputFormat == "JPG" ? {borderColor: "indigo"} : null}
                                     >
                                         JPG
                                     </button>
                                     <button onClick={()=>{setOutputFormat("PNG")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                        style={outputFormat == "PNG" ? {borderColor: "indigo"} : null}
                                     >
                                         PNG
                                     </button>
                                     <button onClick={()=>{setOutputFormat("webP")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                        style={outputFormat == "webP" ? {borderColor: "indigo"} : null}
                                     >
                                         WebP
                                     </button>
                                     <button  onClick={()=>{setOutputFormat("Original")}}
                                         type="button"
                                         className="px-4 py-2 rounded-lg border-2 border-slate-200 bg-white text-sm font-medium text-slate-700 hover:border-indigo-500 hover:bg-indigo-50 transition-colors"
+                                        style={outputFormat == "Original" ? {borderColor: "indigo"} : null}
                                     >
                                         Original
                                     </button>
@@ -229,7 +243,7 @@ function Upload() {
                             {/* Quality Slider */}
                             <div>
                                 <label className="block mb-3">
-                                    <span className="text-sm font-medium text-slate-700">Quality: 85%</span>
+                                    <span className="text-sm font-medium text-slate-700">Quality: {quality}%</span>
                                 </label>
                                 <input 
                                     type="range"
@@ -252,6 +266,7 @@ function Upload() {
                         <button
                             type="button"
                             className="flex-1 rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-slate-800"
+                            onClick={handleResize}
                         >
                             Resize Images
                         </button>
